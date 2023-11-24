@@ -1,0 +1,9 @@
+/* src/app/components/inventory-add/inventory-add.component.css */
+mat-card {
+  max-width: 600px;
+  margin: 2rem auto;
+}
+
+mat-form-field {
+  width: 100%;
+}

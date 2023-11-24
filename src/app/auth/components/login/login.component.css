@@ -1,0 +1,154 @@
+.container {
+  display: flex;
+  justify-content: flex-end; /* Alinha à direita */
+  height: 100vh; /* Altura total da viewport */
+  padding: 16px;
+  align-items: center; /* Centraliza verticalmente */
+
+}
+
+.circulo{
+  border-radius: 100%;
+  width: 340px;
+  height: 340px;
+  background-color: black;
+
+
+}
+
+.circulo-1{
+position: relative;
+top: 240px;
+background: linear-gradient(173deg, rgba(255,228,221,1) 0%, rgba(219,199,206,0) 100%);
+}
+
+.circulo-2{
+position: relative;
+left: -200px;
+background: linear-gradient(173deg, rgba(229,166,179,1) 0%, rgba(219,199,206,0) 100%);
+}
+
+.circulo-3{
+position: relative;
+left: -50px;
+bottom: 200px;
+background: linear-gradient(173deg, rgba(219,199,218,1) 0%, rgba(219,199,206,0) 100%)
+
+
+}
+
+.flor{
+  width: 300px;
+  background-image: url("/assets/flor.svg");
+  height: 300px;
+  background-size: cover;
+  position: relative;
+  top: -650px;
+  left: -60px;
+}
+
+.circulo-container {
+  width: 50%; /* Ou o tamanho que preferir */
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  flex-direction: column;
+  margin: 0 auto 0 0;
+}
+
+.login-container {
+  max-width: 400px;
+  margin-right: 10%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  max-width: 400px;
+  margin: auto;
+  padding: 1em;
+}
+
+
+mat-card {
+  margin: 2em 0;
+  padding: 1em;
+  border-radius: 15px; /* Adiciona bordas arredondadas ao cartão */
+  border: 2px solid black; /* Adiciona borda preta ao cartão */
+  box-shadow: none; /* Opcional: remove sombras se houver */
+}
+
+.custom-button {
+  background-color: #FFE4DD; /* Exemplo de cor rosa */
+  color: #FFE4DD; /* Cor do texto */
+  margin-top: 10px; /* Espaço acima do botão */
+  padding: 10px 20px; /* Preenchimento dentro do botão */
+  border: none; /* Remove a borda padrão */
+  border-radius: 4px; /* Borda arredondada */
+
+  cursor: pointer; /* Muda o cursor para indicar que é clicável */
+}
+
+.custom-button:hover {
+  background-color: #FFE4DD; /* Cor mais escura no hover */
+}
+
+mat-card-header {
+  justify-content: center;
+  margin-bottom: 1em;
+}
+
+mat-card-title {
+  text-align: center;
+  width: 100%;
+}
+
+mat-form-field {
+  width: 100%;
+  margin-bottom: 1em;
+}
+
+.secondary-action {
+  text-align: center;
+  margin-top: 2em;
+}
+
+a {
+  color: #E5A6B3;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+ button{
+  width: 100%;
+  margin-top: 1em;
+  border-radius: 4px; /* Arredonda as bordas do botão*/
+  background-color:#E5A6B3;
+  color: white;
+  border: none;
+
+}
+
+
+mat-form-field.mat-form-field {
+  width: 100%;
+  margin-bottom: 1em;
+}
+
+
+
+/* Estiliza os inputs dentro dos mat-form-fields
+input.mat-input-element
+  background-color: #DBC7DA; /* Sua cor desejada para o fundo
+  border-radius: 4px;  Para arredondar as bordas do input
+  padding: 0.5em;  Adiciona um pouco de espaço interno
+  border: 1px solid #a094a9;  Adiciona uma borda sutil se desejar
+}*/
+
+/* Corrige a cor de fundo ao focar no input para manter a mesma cor do fundo
+input.mat-input-element:focus {
+  background-color: #DBC7DA;
+}
+*/

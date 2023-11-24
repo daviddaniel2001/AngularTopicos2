@@ -1,0 +1,109 @@
+<mat-toolbar color="primary" class="centered-toolbar">Cadastro de Usuario</mat-toolbar>
+<div class="form-container">
+    <mat-card>
+        <mat-card-content>
+            <form [formGroup]="formGroup" >
+                <mat-form-field appearance="outline" class="full-width-input">
+                    <mat-label>Nome</mat-label>
+                    <input placeholder="input" matInput type="text" formControlName="nome" />
+                    <mat-error *ngIf="formGroup.get('nome')?.hasError('apiError')">
+                        {{ formGroup.get('nome')?.getError('apiError') }}
+                        Nome é obrigatório.
+                    </mat-error>
+                </mat-form-field>
+
+                <mat-form-field appearance="outline" class="full-width-input">
+                    <mat-label>Cpf</mat-label>
+                    <input placeholder="input" matInput type="text" formControlName="cpf" />
+                    <mat-error *ngIf="formGroup.get('cpf')?.hasError('apiError')">
+                        {{ formGroup.get('sigla')?.getError('apiError') }}
+                    </mat-error>
+                </mat-form-field>
+
+                <mat-form-field appearance="outline" class="full-width-input">
+                    <mat-label>Sexo</mat-label>
+                    <mat-select><mat-option *ngFor="let item of sexos" [value]="item.id">
+                    {{item.nome}}     </mat-option>   </mat-select>
+                    <mat-error *ngIf="formGroup.get('sexo') &&
+                formGroup.get('sexo')?.invalid &&
+                formGroup.get('sexo')?.touched">
+                        Sexo é obrigatório.
+                    </mat-error>
+                </mat-form-field>
+
+                <mat-form-field appearance="outline" class="full-width-input">
+                    <mat-label>Telefone</mat-label>
+                    <input placeholder="input" matInput type="text" formControlName="telefone" />
+                    <mat-error *ngIf="formGroup.get('telefone')?.hasError('apiError')">
+                        {{ formGroup.get('telefone')?.getError('apiError') }}
+                    </mat-error>
+                </mat-form-field>
+
+                <mat-form-field appearance="outline" class="full-width-input">
+                    <mat-label>Endereco</mat-label>
+                    <input placeholder="input" matInput type="text" formControlName="endereco" />
+                    <mat-error *ngIf="formGroup.get('endereco')?.hasError('apiError')">
+                        {{ formGroup.get('endereco')?.getError('apiError') }}
+                    </mat-error>
+                </mat-form-field>
+
+                <mat-form-field appearance="outline" class="full-width-input">
+                    <mat-label>Perfil</mat-label>
+                    <mat-select><mat-option *ngFor="let item of perfis" [value]="item.id">
+                    {{item.nome}}     </mat-option>   </mat-select>
+                    <mat-error *ngIf="formGroup.get('perfil') &&
+                formGroup.get('perfil')?.invalid &&
+                formGroup.get('perfil')?.touched">
+                        Perfil é obrigatório.
+                    </mat-error>
+                </mat-form-field>
+
+
+                <mat-form-field appearance="outline" class="full-width-input">
+                    <mat-label>Login</mat-label>
+                    <input placeholder="input" matInput type="text" formControlName="login" />
+                    <mat-error *ngIf="formGroup.get('login')?.hasError('apiError')">
+                        {{ formGroup.get('login')?.getError('apiError') }}
+                    </mat-error>
+                </mat-form-field>
+
+                <mat-form-field appearance="outline" class="full-width-input">
+                    <mat-label>Senha</mat-label>
+                    <input placeholder="input" matInput type="text" formControlName="senha" />
+                    <mat-error *ngIf="formGroup.get('cpf')?.hasError('apiError')">
+                        {{ formGroup.get('senha')?.getError('apiError') }}
+                    </mat-error>
+                </mat-form-field>
+
+                <mat-form-field appearance="outline" class="full-width-input">
+                    <mat-label>NomeImagem</mat-label>
+                    <input placeholder="input" matInput type="text" formControlName="nomeImagem" />
+                    <mat-error *ngIf="formGroup.get('cpf')?.hasError('apiError')">
+                        {{ formGroup.get('nomeImagem')?.getError('apiError') }}
+                    </mat-error>
+                </mat-form-field>
+
+            </form>
+        </mat-card-content>
+        <mat-card-actions>
+            <button mat-raised-button
+                color="primary"
+                (click)="salvar()"
+                [disabled]="formGroup.invalid">
+                Salvar
+            </button>
+            <button mat-raised-button
+                *ngIf="formGroup?.get('id')?.value"
+                color="warn"
+                (click)="excluir()"
+                [disabled]="formGroup.invalid">
+                Excluir
+            </button>
+            <button mat-raised-button
+                routerLink="/fornecedores/list">
+                Cancelar
+            </button>
+        </mat-card-actions>
+    </mat-card>
+</div>
+

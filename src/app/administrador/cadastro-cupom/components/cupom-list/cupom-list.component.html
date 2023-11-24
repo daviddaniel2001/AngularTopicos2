@@ -1,0 +1,88 @@
+<mat-toolbar color="primary">
+    <div class="flex-container">
+      <span class="toolbar-title"> Cadastro de Cupons </span>
+      <button mat-fab color="accent" routerLink="/cupons/new">
+        <mat-icon>add</mat-icon>
+      </button>
+    </div>
+  </mat-toolbar>
+  <div class="container">
+    <div class="input-container">
+      <mat-form-field appearance="outline" class="input-field">
+        <mat-label>Pesquisar</mat-label>
+        <input [(ngModel)]="filtro" matInput placeholder="Ex. 542312" #input>
+      </mat-form-field>
+      <button mat-icon-button color="primary"
+              class="search-button"
+              (click)="aplicarFiltro()">
+        <mat-icon>search</mat-icon>
+      </button>
+    </div>
+  </div>
+
+  <table mat-table [dataSource]="cupom" class="mat-elevation-z8 demo-table">
+
+      <ng-container matColumnDef="id-column">
+        <th mat-header-cell *matHeaderCellDef> Id </th>
+        <td mat-cell *matCellDef="let cupom"> {{cupom.id}} </td>
+      </ng-container>
+
+       <ng-container matColumnDef="codigo-column">
+        <th mat-header-cell *matHeaderCellDef> Codigo </th>
+        <td mat-cell *matCellDef="let cupom">
+          <a routerLink="/cupons/edit/{{cupom.codigo}}"> {{cupom.codigo}} </a>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="porcentagem-column">
+        <th mat-header-cell *matHeaderCellDef> Porcetagem </th>
+        <td mat-cell *matCellDef="let cupom">
+          <a routerLink="/porcetagens/edit/{{cupom.porcentagem}}"> {{cupom.porcentagem}} </a>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="ativo-column">
+        <th mat-header-cell *matHeaderCellDef> Ativo </th>
+        <td mat-cell *matCellDef="let cupom">
+          <a routerLink="/ativos/edit/{{cupom.ativo}}"> {{cupom.ativo}} </a>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="validade-column">
+        <th mat-header-cell *matHeaderCellDef> Validade </th>
+        <td mat-cell *matCellDef="let cupom">
+          <a routerLink="/validades/edit/{{cupom.validade}}"> {{cupom.validade}} </a>
+        </td>
+      </ng-container>
+
+       <!-- Ação Column -->
+    <ng-container matColumnDef="acao-column">
+      <th mat-header-cell *matHeaderCellDef> Ação </th>
+      <td mat-cell *matCellDef="let cupom">
+        <button mat-icon-button
+                color="primary"
+                routerLink="/cupons/edit/{{cupom.id}}">
+          <mat-icon>edit</mat-icon>
+        </button>
+        <button mat-icon-button color="warn" >
+          <mat-icon>delete</mat-icon>
+        </button>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="tableColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: tableColumns;"></tr>
+
+    <!-- Row shown when there is no matching data. -->
+    <tr class="mat-row" *matNoDataRow>
+      <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
+    </tr>
+  </table>
+
+  <mat-paginator
+    [pageSizeOptions]="[2, 4, 8, 16]"
+    [pageSize]="pageSize"
+    [length]="totalRegistros"
+    (page)="paginar($event)">
+  </mat-paginator>
+

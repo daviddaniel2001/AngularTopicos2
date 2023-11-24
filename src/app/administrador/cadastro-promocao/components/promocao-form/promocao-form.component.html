@@ -1,0 +1,65 @@
+<mat-toolbar color="primary" class="centered-toolbar">Cadastro de Promocoes</mat-toolbar>
+<div class="form-container">
+    <mat-card>
+        <mat-card-content>
+            <form [formGroup]="formGroup" >
+                <mat-form-field appearance="outline" class="full-width-input">
+                    <mat-label>NomePromocao</mat-label>
+                    <input placeholder="nomePromocao" matInput type="text" formControlName="nomePromocao" />
+                    <mat-error *ngIf="formGroup.get('nomePromocao')?.hasError('apiError')">
+                        {{ formGroup.get('nomePromocao')?.getError('apiError') }}
+                    </mat-error>
+                </mat-form-field>
+                <mat-form-field appearance="outline" class="full-width-input">
+                    <mat-label>ProdutoElegivel</mat-label>
+                    <input placeholder="produtoElegivel" matInput type="text" formControlName="produtoElegivel" />
+                    <mat-error *ngIf="formGroup.get('produtoElegivel')?.hasError('apiError')">
+                        {{ formGroup.get('produtoElegivel')?.getError('apiError') }}
+                    </mat-error>
+                </mat-form-field>
+                <mat-form-field appearance="outline" class="full-width-input">
+                    <mat-label>Desconto</mat-label>
+                    <input placeholder="desconto" matInput type="text" formControlName="desconto" />
+                    <mat-error *ngIf="formGroup.get('desconto')?.hasError('apiError')">
+                        {{ formGroup.get('desconto')?.getError('apiError') }}
+                    </mat-error>
+                </mat-form-field>
+                <mat-form-field appearance="outline" class="full-width-input">
+                    <mat-label>DataInicio</mat-label>
+                    <input placeholder="dataInicio" matInput type="text" formControlName="dataInicio" />
+                    <mat-error *ngIf="formGroup.get('dataInicio')?.hasError('apiError')">
+                        {{ formGroup.get('dataInicio')?.getError('apiError') }}
+                    </mat-error>
+                </mat-form-field>
+                <mat-form-field appearance="outline" class="full-width-input">
+                    <mat-label>DataTermino</mat-label>
+                    <input placeholder="dataTermino" matInput type="text" formControlName="dataTermino" />
+                    <mat-error *ngIf="formGroup.get('dataTermino')?.hasError('apiError')">
+                        {{ formGroup.get('dataTermino')?.getError('apiError') }}
+                    </mat-error>
+                </mat-form-field>
+
+            </form>
+        </mat-card-content>
+        <mat-card-actions>
+            <button mat-raised-button
+                color="primary"
+                (click)="salvar()"
+                [disabled]="formGroup.invalid">
+                Salvar
+            </button>
+            <button mat-raised-button
+                *ngIf="formGroup?.get('id')?.value"
+                color="warn"
+                (click)="excluir()"
+                [disabled]="formGroup.invalid">
+                Excluir
+            </button>
+            <button mat-raised-button
+                routerLink="/fornecedores/list">
+                Cancelar
+            </button>
+        </mat-card-actions>
+    </mat-card>
+</div>
+

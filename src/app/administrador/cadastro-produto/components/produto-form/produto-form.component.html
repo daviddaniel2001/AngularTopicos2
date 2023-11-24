@@ -1,0 +1,67 @@
+<mat-toolbar color="primary" class="centered-toolbar">Cadastro de Produto</mat-toolbar>
+<div class="form-container">
+    <mat-card>
+        <mat-card-content>
+            <form [formGroup]="formGroup">
+                <mat-form-field appearance="outline" class="full-width-input">
+                    <mat-label>Nome</mat-label>
+                    <input placeholder="input" matInput type="text" formControlName="nome" />
+                    <mat-error *ngIf="formGroup.get('nome')?.hasError('apiError')">
+                        {{ formGroup.get('nome')?.getError('apiError') }}
+                        Nome é obrigatório.
+                    </mat-error>
+                </mat-form-field>
+
+                <mat-form-field appearance="outline" class="full-width-input">
+                    <mat-label>Descricao</mat-label>
+                    <input placeholder="input" matInput type="text" formControlName="descricao" />
+                    <mat-error *ngIf="formGroup.get('descricao')?.hasError('apiError')">
+                        {{ formGroup.get('descricao')?.getError('apiError') }}
+                        Descricao é obrigatório.
+                    </mat-error>
+                </mat-form-field>
+
+                <mat-form-field appearance="outline" class="full-width-input">
+                    <mat-label>Valor Unidade</mat-label>
+                    <input placeholder="input" matInput type="text" formControlName="valorUnidade" />
+                    <mat-error *ngIf="formGroup.get('valorUnidade')?.hasError('apiError')">
+                        {{ formGroup.get('valorUnidade')?.getError('apiError') }}
+                        Valor da Unidade é obrigatório.
+                    </mat-error>
+                </mat-form-field>
+
+                <mat-form-field appearance="outline" class="full-width-input">
+                    <mat-label>Nome Imagem</mat-label>
+                    <input placeholder="input" matInput type="text" formControlName="nomeImagem" />
+                    <mat-error *ngIf="formGroup.get('nomeImagem')?.hasError('apiError')">
+                        {{ formGroup.get('nomeImagem')?.getError('apiError') }}
+                        Nome Imagem é obrigatório.
+                    </mat-error>
+                </mat-form-field>
+
+                <mat-form-field appearance="outline" class="full-width-input">
+                    <mat-label>Quantidade Estoque</mat-label>
+                    <input placeholder="text" formControlName="quantEstoque" />
+                    <input placeholder="input" matInput type="text" formControlName="quantidadeEstoque" />
+                    <mat-error *ngIf="formGroup.get('quantidadeEstoque')?.hasError('apiError')">
+                        {{ formGroup.get('quantidadeEstoque')?.getError('apiError') }}
+                        Quantidade de estoque é obrigatório.
+                    </mat-error>
+                </mat-form-field>
+
+            </form>
+        </mat-card-content>
+        <mat-card-actions>
+            <button mat-raised-button color="primary" (click)="salvar()" [disabled]="formGroup.invalid">
+                Salvar
+            </button>
+            <button mat-raised-button *ngIf="formGroup?.get('id')?.value" color="warn" (click)="excluir()"
+                [disabled]="formGroup.invalid">
+                Excluir
+            </button>
+            <button mat-raised-button routerLink="/produto/list">
+                Cancelar
+            </button>
+        </mat-card-actions>
+    </mat-card>
+</div>

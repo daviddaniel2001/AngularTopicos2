@@ -1,0 +1,93 @@
+<mat-toolbar class="centered-toolbar">Cadastro de Flor</mat-toolbar>
+<div class="form-container">
+  <mat-card>
+    <mat-card-content>
+      <form [formGroup]="formGroup" >
+        <mat-form-field appearance="outline" class="full-width-input">
+          <mat-label>CorPetalas</mat-label>
+          <input matInput type="text" formControlName="corPetalas" />
+          <mat-error *ngIf="formGroup.get('corPetalas')?.hasError('apiError')">
+            {{ formGroup.get('corPetalas')?.getError('apiError') }}
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="outline" class="full-width-input">
+          <mat-label>Descrição</mat-label>
+          <input matInput type="text" formControlName="descricao"  />
+          <mat-error *ngIf="formGroup.get('descricao')?.hasError('apiError')">
+            {{ formGroup.get('descricao')?.getError('apiError') }}
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="full-width-input">
+          <mat-label>TipoFlor</mat-label>
+          <mat-select formControlName="tipoFlor" #selectTipoFlor >
+            <mat-option *ngFor="let tipoFlor of tipoFlores" [value]="tipoFlor">
+              {{ tipoFlor.label }}
+            </mat-option>
+          </mat-select>
+
+          <mat-error *ngIf="formGroup.get('tipoFlor')?.hasError('apiError')">
+            {{ formGroup.get('tipoFlor')?.getError('apiError') }}
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="outline" class="full-width-input">
+          <mat-label>Preço</mat-label>
+          <input matInput type="text" formControlName="preco" #inputPreco />
+          <mat-error *ngIf="formGroup.get('preco')?.hasError('apiError')">
+            {{ formGroup.get('preco')?.getError('apiError') }}
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="full-width-input">
+          <mat-label>Imagem da Flor</mat-label>
+          <input type="file" (change)="carregarImagemSelecionada($event)" hidden #fileInput>
+          <input matInput [value]="fileName" readonly>
+
+          <button mat-icon-button matSuffix (click)="fileInput.click()">
+            <mat-icon>folder_open</mat-icon>
+          </button>
+        </mat-form-field>
+
+        <div *ngIf="imagePreview" class="container responsive-grid">
+          <mat-card>
+
+            <img mat-card-image [src]="imagePreview" >
+
+            <mat-card-content class="centered-text"> {{selectTipoFlor.value}} </mat-card-content>
+            <br/>
+            <mat-card-content class="centered-text"> {{inputPreco.value | currency:'BRL'}} </mat-card-content>
+
+            <mat-card-actions class="centered-text">
+              <button mat-button color="primary">Ver mais ...</button>
+            </mat-card-actions>
+
+            <mat-card-footer>
+              <button mat-flat-button color="accent"
+                      style="width: 100%; padding: 16px;">Adicionar ao carrinho</button>
+            </mat-card-footer>
+          </mat-card>
+        </div>
+
+      </form>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-raised-button
+              color="primary"
+              (click)="salvar()"
+              [disabled]="formGroup.invalid">
+        Salvar
+      </button>
+      <button mat-raised-button
+              *ngIf="formGroup?.get('id')?.value"
+              color="warn"
+              (click)="excluir()"
+              [disabled]="formGroup.invalid">
+        Excluir
+      </button>
+      <button mat-raised-button
+              routerLink="/flores/list">
+        Cancelar
+      </button>
+    </mat-card-actions>
+  </mat-card>
+</div>
